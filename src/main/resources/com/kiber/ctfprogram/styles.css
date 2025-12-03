@@ -1,0 +1,84 @@
+/* GLOBAL BACKGROUND */
+.root {
+    -fx-background-color: #000000;
+    -fx-font-family: "JetBrains Mono";
+}
+
+.anchor-pane {
+    -fx-background-color: #000000;
+}
+
+.titled-pane > .content {
+    -fx-background-color: #000000;
+}
+
+/* ===== TERMINAL ===== */
+#terminal {
+    -fx-control-inner-background: #000000;
+    -fx-background-color: #000000;
+    -fx-text-fill: #00FF41;
+    -fx-font-family: "JetBrains Mono";
+    -fx-border-color: #00FF41;
+    -fx-border-width: 1px;
+}
+
+#terminalEntry {
+    -fx-background-color: #000000;
+    -fx-text-fill: #00FF41;
+    -fx-font-family: "JetBrains Mono";
+    -fx-border-color: #00FF41;
+}
+
+/* ===== LABELS ===== */
+.label {
+    -fx-text-fill: #00FF41;
+    -fx-font-family: "JetBrains Mono";
+}
+
+.task-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+
+/* ===== BUTTONS ===== */
+.button {
+    -fx-background-color: #00CC33;
+    -fx-text-fill: #000000;
+    -fx-font-family: "JetBrains Mono";
+}
+
+/* ===== TEXT FIELDS ===== */
+.text-field {
+    -fx-background-color: #000000;
+    -fx-text-fill: #00FF41;
+    -fx-font-family: "JetBrains Mono";
+    -fx-border-color: #00FF41;
+    -fx-border-width: 1px;
+}
+
+/* ===== TABS ===== */
+.tab-pane {
+    -fx-background-color: #000000;
+}
+
+.tab {
+    -fx-background-color: #000000;
+}
+
+.tab:selected {
+    -fx-background-color: #00FF41;
+}
+
+.tab .tab-label {
+    -fx-text-fill: #00FF41;
+    -fx-font-family: "JetBrains Mono";
+}
+
+.tab:selected .tab-label {
+    -fx-text-fill: #000000;
+}
+
+
+
+
