@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="VBox"
+         xmlns="http://javafx.com/javafx/17.0.12"
+         xmlns:fx="http://javafx.com/fxml/1"
+         alignment="TOP_CENTER"
+         spacing="20"
+         prefWidth="400"
+         prefHeight="500">
+
+    <children>
+
+        <!-- TASK TITLE -->
+        <Label fx:id="taskTitle"
+               text="Task Title"
+               styleClass="task-label">
+            <VBox.margin>
+                <Insets top="40"/>
+            </VBox.margin>
+        </Label>
+
+        <!-- FLAG INPUT -->
+        <TextField fx:id="flagField"
+                   promptText="[FL4G]:"
+                   prefWidth="250"/>
+
+        <!-- SHOW HINT BUTTON -->
+        <Button text="Show hint"
+                onAction="#showHint"
+                prefWidth="120"/>
+
+        <!-- HINT LABEL -->
+        <Label fx:id="hintLabel"
+               visible="false"
+               wrapText="true"
+               prefWidth="300"
+               style="-fx-font-size: 12px;"
+               text="(hint appears here)"/>
+
+        <!-- SUBMIT BUTTON -->
+        <Button text="Submit"
+                onAction="#submitFlag"
+                prefWidth="120"/>
+
+    </children>
+
+</fx:root>
+
