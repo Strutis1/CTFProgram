@@ -20,17 +20,131 @@ public class CTFController {
     @FXML private TextField terminalEntry;
     @FXML private TabPane tabPane;
 
+    private TaskController[] tasks;
+
+    String[] titles = {
+            "Task 1: Hidden in plain sight",
+            "Task 2: Metadata",
+            "Task 3: Steganography",
+            "Task 4",
+            "Task 5",
+            "Task 6",
+            "Task 7",
+            "Task 8",
+            "Task 9",
+            "Task 10"
+    };
+
+    String[] hints = {
+            "It's dark in here.",
+            "Right-click → properties.",
+            "Maybe an image?",
+            "Hint 4",
+            "Hint 5",
+            "Hint 6",
+            "Hint 7",
+            "Hint 8",
+            "Hint 9",
+            "Hint 10"
+    };
+
+    String[] hashes = {
+            "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c",
+            "FLAG2", "FLAG3", "FLAG4", "FLAG5",
+            "FLAG6", "FLAG7", "FLAG8", "FLAG9", "FLAG10"
+    };
+
+
     @FXML
     public void initialize() {
-        task1.setTask("Task 1: Hidden in plain sight", "Its dark in here.", "6258a6b7c2910f6fba790341281fce628d894c6992db3d21557773949082a9da");
-        task2.setTask("Task 2: Metadata", "Right-click → properties.", "FLAG2");
-        task3.setTask("Task 3: Steganography", "Maybe an image?", "FLAG3");
-        task4.setTask("Task 4", "Hint 4", "FLAG4");
-        task5.setTask("Task 5", "Hint 5", "FLAG5");
-        task6.setTask("Task 6", "Hint 6", "FLAG6");
-        task7.setTask("Task 7", "Hint 7", "FLAG7");
-        task8.setTask("Task 8", "Hint 8", "FLAG8");
-        task9.setTask("Task 9", "Hint 9", "FLAG9");
-        task10.setTask("Task 10", "Hint 10", "FLAG10");
+
+        tasks = new TaskController[] {
+                task1, task2, task3, task4, task5,
+                task6, task7, task8, task9, task10
+        };
+
+
+        for (TaskController t : tasks) {
+            t.setParent(this);
+        }
+
+        for (int i = 0; i < tasks.length; ++i) {
+            tasks[i].setTask(i, titles[i], hints[i], hashes[i]);
+        }
+
+        terminalEntry.setOnAction(e -> {
+            String cmd = terminalEntry.getText().trim();
+            processCommand(cmd);
+            terminalEntry.clear();
+        });
+    }
+
+
+    public void logMessage(String message) {
+        terminal.appendText(message + "\n");
+    }
+
+    public void processCommand(String command) {
+        logMessage(">" + command + "\n");
+        switch (command) {
+            case "/completed": {
+                StringBuilder sb = new StringBuilder("Completed tasks:\n");
+                boolean any = false;
+                for (TaskController t : tasks) {
+                    if (t.isCompleted()) {
+                        any = true;
+                        sb.append(" - ").append(t.getTitle()).append("\n");
+                    }
+                }
+                if (!any) {
+                    sb.append(" (none yet)");
+                }
+                logMessage(sb.toString());
+                break;
+            }
+
+            case "/reset": {
+                for (TaskController t : tasks) {
+                    t.reset();
+                }
+                logMessage("All tasks have been reset.");
+                break;
+            }
+
+            case "/help": {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Commands:\n")
+                        .append(" /completed - list completed tasks\n")
+                        .append(" /reset     - reset all tasks\n")
+                        .append(" /help      - show this help\n")
+                        .append(" /finalize  - check if all tasks are done and move to registration\n");
+                logMessage(sb.toString());
+                break;
+            }
+
+            case "/finalize": {
+                boolean allDone = true;
+                StringBuilder sb = new StringBuilder();
+                for (TaskController t : tasks) {
+                    if (!t.isCompleted()) {
+                        allDone = false;
+                        sb.append("Not completed: ").append(t.getTitle()).append("\n");
+                    }
+                }
+                if (allDone) {
+                    logMessage("All tasks completed! Valio!");
+                    initiateRegistration();
+                } else {
+                    logMessage(sb.toString());
+                }
+                break;
+            }
+
+            default:
+                logMessage("Unknown command. Try /help");
+        }
+    }
+
+    private void initiateRegistration() {
     }
 }

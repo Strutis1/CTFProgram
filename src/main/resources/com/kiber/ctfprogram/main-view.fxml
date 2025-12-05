@@ -29,12 +29,61 @@
                     <tabs>
 
                         <Tab text="Intro">
-                            <AnchorPane/>
+                            <AnchorPane>
+                                <children>
+                                    <VBox alignment="TOP_CENTER"
+                                          spacing="20"
+                                          AnchorPane.topAnchor="40"
+                                          AnchorPane.leftAnchor="20"
+                                          AnchorPane.rightAnchor="20">
+
+                                        <!-- BIG TITLE -->
+                                        <Label text="Welcome to Mano CTF!"
+                                               styleClass="task-label-glow"/>
+
+                                        <!-- SHORT DESCRIPTION -->
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names."/>
+
+                                        <!-- DIFFICULTY INFO -->
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="Tasks are ordered roughly by difficulty: Task 1 is the warm-up, and later tasks require more investigation, tools, and creativity."/>
+
+                                        <!-- COMMANDS HEADER -->
+                                        <Label text="Helpful commands:"
+                                               style="-fx-font-weight: bold;"/>
+
+                                        <!-- COMMAND LIST -->
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/help      - show available commands"/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/completed - list completed tasks"/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/help      - /reset     - reset all task progress"/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/finalize  - check if all tasks are done and move to registration"/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/finalize  - check if all tasks are done and move to registration"/>
+                                        <Label alignment="TOP_CENTER"
+                                               wrapText="true"
+                                               maxWidth="800"
+                                               text="GOOD LUCK AND HAVE FUN!"
+                                               styleClass="task-label-glow"/>
+                                    </VBox>
+                                </children>
+                            </AnchorPane>
                         </Tab>
 
-                        <!-- Each tab now directly contains a TaskController node -->
+
                         <Tab text="Task 1">
-                            <TaskController fx:id="task1"/>
+                            <TaskController fx:id="task1" styleClass="task-background"/>
                         </Tab>
 
                         <Tab text="Task 2">
@@ -81,12 +130,12 @@
                       AnchorPane.bottomAnchor="0"
                       AnchorPane.leftAnchor="0"
                       AnchorPane.rightAnchor="0"
-                      AnchorPane.topAnchor="500">
+                      AnchorPane.topAnchor="700">
 
                     <TextArea fx:id="terminal"
                               editable="false"
                               wrapText="true"
-                              prefHeight="200"/>
+                              VBox.vgrow="ALWAYS"/>
 
                     <TextField fx:id="terminalEntry"
                                promptText="> enter command..."

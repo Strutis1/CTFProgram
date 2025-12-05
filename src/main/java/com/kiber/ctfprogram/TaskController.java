@@ -10,8 +10,21 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.prefs.Preferences;
+
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+
+
 
 public class TaskController extends VBox {
+
+    private CTFController parent;
+
+    public void setParent(CTFController parent) {
+        this.parent = parent;
+    }
+
 
     @FXML private Label taskTitle;
     @FXML private TextField flagField;
@@ -19,6 +32,12 @@ public class TaskController extends VBox {
 
     private String correctFlagHash;
     private String hintText;
+    private String title;
+    private boolean completed = false;
+    private int taskIndex = -1;
+
+    private static final Preferences PREFS =
+            Preferences.userNodeForPackage(TaskController.class);
 
     public TaskController() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("task-view.fxml"));
@@ -31,10 +50,69 @@ public class TaskController extends VBox {
         }
     }
 
-    public void setTask(String title, String hint, String flagHash) {
+
+    public void setTask(int index, String title, String hint, String flagHash) {
+        this.taskIndex = index;
+        this.title = title;
+        this.hintText = hint;
+        this.correctFlagHash = flagHash;
+
         taskTitle.setText(title);
-        hintText = hint;
-        correctFlagHash = flagHash;
+
+        this.completed = PREFS.getBoolean(completedKey(), false);
+
+        if (completed) {
+            applyCompletedUI();
+        } else {
+            resetUIOnly();
+        }
+    }
+
+    private String completedKey() {
+        return "task.completed." + taskIndex;
+    }
+
+    private void applyCompletedUI() {
+        hintLabel.setVisible(true);
+        hintLabel.setText("(completed)");
+        flagField.setEditable(false);
+
+        taskTitle.getStyleClass().remove("task-label");        // remove normal style
+        taskTitle.getStyleClass().add("task-label-glow");      // add glowing style
+    }
+
+
+
+    private void resetUIOnly() {
+        flagField.clear();
+        flagField.setEditable(true);
+        hintLabel.setVisible(false);
+        hintLabel.setText("");
+
+        taskTitle.getStyleClass().remove("task-label-glow");
+        if (!taskTitle.getStyleClass().contains("task-label")) {
+            taskTitle.getStyleClass().add("task-label");
+        }
+    }
+
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void reset() {
+        completed = false;
+        PREFS.putBoolean(completedKey(), false);
+        resetUIOnly();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public String toString() {
+        return title != null ? title : "(unnamed task)";
     }
 
     @FXML
@@ -49,9 +127,12 @@ public class TaskController extends VBox {
         String enteredHash = sha256(entered);
 
         if (enteredHash.equalsIgnoreCase(correctFlagHash)) {
-            System.out.println("Correct!");
+            parent.logMessage(getTitle() + " - Correct!");
+            completed = true;
+            PREFS.putBoolean(completedKey(), true);
+            applyCompletedUI();
         } else {
-            System.out.println("Wrong flag.");
+            parent.logMessage(getTitle() + " - Wrong flag.");
         }
     }
 

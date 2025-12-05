@@ -12,41 +12,31 @@
          prefWidth="400"
          prefHeight="500">
 
-    <children>
+    <Label fx:id="taskTitle"
+           text="Task Title"
+           styleClass="task-label">
+        <VBox.margin>
+            <Insets top="40"/>
+        </VBox.margin>
+    </Label>
 
-        <!-- TASK TITLE -->
-        <Label fx:id="taskTitle"
-               text="Task Title"
-               styleClass="task-label">
-            <VBox.margin>
-                <Insets top="40"/>
-            </VBox.margin>
-        </Label>
+    <TextField fx:id="flagField"
+               promptText="[FL4G]:"
+               prefWidth="250"/>
 
-        <!-- FLAG INPUT -->
-        <TextField fx:id="flagField"
-                   promptText="[FL4G]:"
-                   prefWidth="250"/>
+    <Button text="Show hint"
+            onAction="#showHint"
+            prefWidth="120"/>
 
-        <!-- SHOW HINT BUTTON -->
-        <Button text="Show hint"
-                onAction="#showHint"
-                prefWidth="120"/>
+    <Label fx:id="hintLabel"
+           visible="false"
+           wrapText="true"
+           prefWidth="300"
+           style="-fx-font-size: 12px;"
+           text="(hint appears here)"/>
 
-        <!-- HINT LABEL -->
-        <Label fx:id="hintLabel"
-               visible="false"
-               wrapText="true"
-               prefWidth="300"
-               style="-fx-font-size: 12px;"
-               text="(hint appears here)"/>
-
-        <!-- SUBMIT BUTTON -->
-        <Button text="Submit"
-                onAction="#submitFlag"
-                prefWidth="120"/>
-
-    </children>
+    <Button text="Submit"
+            onAction="#submitFlag"
+            prefWidth="120"/>
 
 </fx:root>
-

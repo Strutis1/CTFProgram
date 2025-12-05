@@ -40,6 +40,15 @@
     -fx-font-weight: bold;
 }
 
+.task-label-glow {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00FF41;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,255,65,0.9), 22, 0.6, 0, 0);
+}
+
+
 
 /* ===== BUTTONS ===== */
 .button {
@@ -78,6 +87,15 @@
 .tab:selected .tab-label {
     -fx-text-fill: #000000;
 }
+
+
+.task-background {
+    -fx-background-image: url("Images/background.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
 
 
 
