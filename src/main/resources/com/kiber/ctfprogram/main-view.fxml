@@ -24,7 +24,7 @@
                          AnchorPane.topAnchor="0"
                          AnchorPane.leftAnchor="0"
                          AnchorPane.rightAnchor="0"
-                         prefHeight="500">
+                         prefHeight="700">
 
                     <tabs>
 
@@ -44,7 +44,7 @@
                                         <!-- SHORT DESCRIPTION -->
                                         <Label wrapText="true"
                                                maxWidth="800"
-                                               text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names."/>
+                                               text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names. The locations of flags can vary from the app itself to its source code so keep that in mind."/>
 
                                         <!-- DIFFICULTY INFO -->
                                         <Label wrapText="true"
@@ -64,18 +64,21 @@
                                                text="/completed - list completed tasks"/>
                                         <Label wrapText="true"
                                                maxWidth="800"
-                                               text="/help      - /reset     - reset all task progress"/>
+                                               text="/reset     - reset all task progress"/>
                                         <Label wrapText="true"
                                                maxWidth="800"
                                                text="/finalize  - check if all tasks are done and move to registration"/>
-                                        <Label wrapText="true"
-                                               maxWidth="800"
-                                               text="/finalize  - check if all tasks are done and move to registration"/>
+
                                         <Label alignment="TOP_CENTER"
                                                wrapText="true"
                                                maxWidth="800"
                                                text="GOOD LUCK AND HAVE FUN!"
                                                styleClass="task-label-glow"/>
+                                                                                                                                                                                                                    <TextArea text="W0ZMNEddOmgxZGQzbl8xbl90M3h0" editable="false"  prefRowCount="1" maxWidth="800" style="-fx-control-inner-background:black; -fx-text-fill:black; -fx-background-color:transparent; -fx-background-insets:0; -fx-padding:0; -fx-border-color:black; -fx-border-width:0; -fx-font-size:14px;" />
+                                        <Label alignment="TOP_CENTER"
+                                               wrapText="true"
+                                               maxWidth="800"
+                                               text="ALL CODES AND FILES CAN BE FOUND ON MY GIT: https://github.com/Strutis1"/>
                                     </VBox>
                                 </children>
                             </AnchorPane>

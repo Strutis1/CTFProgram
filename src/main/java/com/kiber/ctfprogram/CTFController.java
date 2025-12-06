@@ -24,9 +24,9 @@ public class CTFController {
 
     String[] titles = {
             "Task 1: Hidden in plain sight",
-            "Task 2: Metadata",
-            "Task 3: Steganography",
-            "Task 4",
+            "Task 2: Straight from the source",
+            "Task 3: Beyond /help",
+            "Task 4: Back to the Beginning",
             "Task 5",
             "Task 6",
             "Task 7",
@@ -37,9 +37,9 @@ public class CTFController {
 
     String[] hints = {
             "It's dark in here.",
-            "Right-click → properties.",
-            "Maybe an image?",
-            "Hint 4",
+            "Look where clutter is filtered out.",
+            "Read what the code says, not what the UI says.",
+            "The beginning contains something you weren’t meant to see… unless you look differently.",
             "Hint 5",
             "Hint 6",
             "Hint 7",
@@ -49,10 +49,29 @@ public class CTFController {
     };
 
     String[] hashes = {
-            "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c",
-            "FLAG2", "FLAG3", "FLAG4", "FLAG5",
-            "FLAG6", "FLAG7", "FLAG8", "FLAG9", "FLAG10"
+            "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c", "1a2891163e1bce944194712be2600bbe80f7b082f14e51833e6ea6d880b17a05",
+            "8d2d4c3a2652c92afb982f854522a42d80d1c5d11ca4fd1f31b4bf7d4f7036c7", "352213d0d991291eed232847a798751a90036634d851b258304bade32f1f909d",
+            "FLAG5", "FLAG6",
+            "FLAG7", "FLAG8",
+            "FLAG9", "FLAG10"
     };
+
+                                                                                                                                                                                        private static final int[] PUMPKIN_ENC = {
+                                                                                                                                                                                                113, 108, 102, 30, 109, 119, 16, 70, 27, 94, 94, 70, 79, 117, 90, 95, 71, 90, 65, 27, 68
+                                                                                                                                                                                        };
+
+
+                                                                                                                                                                                        private String getPumpkinFlag() {
+                                                                                                                                                                                            StringBuilder sb = new StringBuilder();
+                                                                                                                                                                                            for (int x : PUMPKIN_ENC) {
+                                                                                                                                                                                                sb.append((char) (x ^ 42)); // reverse the XOR
+                                                                                                                                                                                            }
+                                                                                                                                                                                            return sb.toString();
+                                                                                                                                                                                        }
+
+                                                                                                                                                                                        private void handlePumpkin() {
+                                                                                                                                                                                            logMessage(getPumpkinFlag() + "\n");
+                                                                                                                                                                                        }
 
 
     @FXML
@@ -119,6 +138,11 @@ public class CTFController {
                         .append(" /help      - show this help\n")
                         .append(" /finalize  - check if all tasks are done and move to registration\n");
                 logMessage(sb.toString());
+                break;
+            }
+
+            case "/pumpkin": {
+                handlePumpkin();
                 break;
             }
 
