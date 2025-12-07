@@ -39,4 +39,9 @@
             onAction="#submitFlag"
             prefWidth="120"/>
 
+    <Button fx:id="exportButton"
+            text="Export file"
+            onAction="#exportTaskFile"
+            prefWidth="120"/>
+
 </fx:root>

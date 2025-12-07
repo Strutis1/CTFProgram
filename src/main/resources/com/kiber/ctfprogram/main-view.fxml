@@ -44,7 +44,7 @@
                                         <!-- SHORT DESCRIPTION -->
                                         <Label wrapText="true"
                                                maxWidth="800"
-                                               text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names. The locations of flags can vary from the app itself to its source code so keep that in mind."/>
+                                               text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names. The locations of flags can vary from the app itself to its source code or outside the app completely so keep that in mind."/>
 
                                         <!-- DIFFICULTY INFO -->
                                         <Label wrapText="true"

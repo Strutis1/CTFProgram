@@ -6,15 +6,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.prefs.Preferences;
 
 import javafx.scene.effect.DropShadow;
 import javafx.scene.paint.Color;
-
+import javafx.stage.FileChooser;
 
 
 public class TaskController extends VBox {
@@ -135,6 +139,52 @@ public class TaskController extends VBox {
             parent.logMessage(getTitle() + " - Wrong flag.");
         }
     }
+
+    @FXML
+    private void exportTaskFile() {
+        String resourcePath = null;
+        String suggestedName = null;
+
+        switch (taskIndex) {
+            case 5:
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task6.png";
+                suggestedName = "task6.png";
+                break;
+            case 6:
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task7.txt";
+                suggestedName = "task7.txt";
+                break;
+            case 8:
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task9.pcap";
+                suggestedName = "task9.pcap";
+                break;
+            default:
+                parent.logMessage(getTitle() + " - No file to export for this task.");
+                return;
+        }
+
+        try (InputStream in = getClass().getResourceAsStream(resourcePath)) {
+            if (in == null) {
+                parent.logMessage(getTitle() + " - Resource not found: " + resourcePath);
+                return;
+            }
+
+            FileChooser chooser = new FileChooser();
+            chooser.setTitle("Save file for " + getTitle());
+            chooser.setInitialFileName(suggestedName);
+
+            File target = chooser.showSaveDialog(this.getScene().getWindow());
+            if (target == null) {
+                return; // user cancelled
+            }
+
+            Files.copy(in, target.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            parent.logMessage(getTitle() + " - Exported to: " + target.getAbsolutePath());
+        } catch (IOException e) {
+            parent.logMessage(getTitle() + " - Failed to export: " + e.getMessage());
+        }
+    }
+
 
     private static String sha256(String input) {
         try {

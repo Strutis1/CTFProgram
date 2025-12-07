@@ -30,7 +30,7 @@ public class CTFController {
             "Task 5",
             "Task 6",
             "Task 7",
-            "Task 8",
+            "Task 8: Retrograde Signature Archive",
             "Task 9",
             "Task 10"
     };
@@ -43,7 +43,7 @@ public class CTFController {
             "Hint 5",
             "Hint 6",
             "Hint 7",
-            "Hint 8",
+            "This is RSA",
             "Hint 9",
             "Hint 10"
     };
