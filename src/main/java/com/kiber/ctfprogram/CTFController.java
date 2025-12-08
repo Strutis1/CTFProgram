@@ -30,7 +30,7 @@ public class CTFController {
             "Task 5: Packed Keepsake(task5.png)",
             "Task 6: Dog With Extra Baggage(task6.jpg)",
             "Task 7: Wrong charset(task7.txt)",
-            "Task 8: Retrograde Signature Archive",
+            "Task 8: Rooted twice, a Shared exponent, and an Awaited cipher",
             "Task 9: Memory Surgery",
             "Task 10: 63 elzzup eht fo eceip tsal ehT"
     };
@@ -43,7 +43,7 @@ public class CTFController {
             "",
             "",
             "",
-            "1012246681\n" + "101\n" + "445449751 862257758 612944151 137404964 513660317 49128542 595042419 718422220",
+            "-304217013558624041351027872758584082997\n\n" + "-260715660134608413191060557032778444511\n\n" +"-65537\n\n" + "-50199638024253326945249950126264517520117620969902286825861374873874353011347",
             "Current value: " + task9Val,
             ""
     };
@@ -56,7 +56,7 @@ public class CTFController {
             "Names lie. Headers don’t. 50 4B says more than .png.",
             "There’s more here than RGB. Extract what the file is carrying.",
             "If it looks like nonsense, you're probably reading it in the wrong encoding.",
-            "One large modulus, one exponent, and many blocks.",
+            "If you can rebuild the private key from what you’re given, the message will reveal itself.",
             "Watching the program isn’t enough. Change it.",
             "Did you find all the fragments? Put them together how the task says"
     };

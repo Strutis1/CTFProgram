@@ -23,11 +23,12 @@
     <TextArea fx:id="taskData"
               editable="false"
               wrapText="true"
-              prefWidth="300"
+              prefWidth="400"
+              prefHeight="250"
               prefRowCount="3"
               visible="false"
               managed="false"
-                style="-fx-background-color: black; -fx-text-fill: #00FF41; -fx-control-inner-background: black"/>
+                style="-fx-background-color: black; -fx-text-fill: #00FF41; -fx-control-inner-background: black; -fx-font-size: 14px"/>
 
     <TextField fx:id="flagField"
                promptText="[FL4G]:"
