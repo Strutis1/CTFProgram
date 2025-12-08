@@ -20,6 +20,15 @@
         </VBox.margin>
     </Label>
 
+    <TextArea fx:id="taskData"
+              editable="false"
+              wrapText="true"
+              prefWidth="300"
+              prefRowCount="3"
+              visible="false"
+              managed="false"
+                style="-fx-background-color: black; -fx-text-fill: #00FF41; -fx-control-inner-background: black"/>
+
     <TextField fx:id="flagField"
                promptText="[FL4G]:"
                prefWidth="250"/>

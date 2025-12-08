@@ -45,6 +45,9 @@
                                         <Label wrapText="true"
                                                maxWidth="800"
                                                text="You will face 10 CTF-style tasks. They start easy and get harder as you progress. Each task has a hint you can reveal and a flag you must submit. The flags will come in the form of [FL4G]:something and can be anywhere, so be vigilant and look closely at the task names. The locations of flags can vary from the app itself to its source code or outside the app completely so keep that in mind."/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="Some tasks might require you to use and analyse some files so use the export button to get the file attached to a certain task.(Tasks which include a file will have the used file name in brackets)"/>
 
                                         <!-- DIFFICULTY INFO -->
                                         <Label wrapText="true"

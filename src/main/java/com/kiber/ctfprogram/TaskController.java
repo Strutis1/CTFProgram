@@ -3,6 +3,7 @@ package com.kiber.ctfprogram;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -33,6 +34,8 @@ public class TaskController extends VBox {
     @FXML private Label taskTitle;
     @FXML private TextField flagField;
     @FXML private Label hintLabel;
+    @FXML private TextArea taskData;
+
 
     private String correctFlagHash;
     private String hintText;
@@ -55,13 +58,25 @@ public class TaskController extends VBox {
     }
 
 
-    public void setTask(int index, String title, String hint, String flagHash) {
+    public void setTask(int index, String title, String content, String hint, String flagHash) {
         this.taskIndex = index;
         this.title = title;
         this.hintText = hint;
         this.correctFlagHash = flagHash;
 
         taskTitle.setText(title);
+
+        if (taskData != null) {
+            if (content != null && !content.isBlank()) {
+                taskData.setText(content);
+                taskData.setVisible(true);
+                taskData.setManaged(true);
+            } else {
+                taskData.clear();
+                taskData.setVisible(false);
+                taskData.setManaged(false);
+            }
+        }
 
         this.completed = PREFS.getBoolean(completedKey(), false);
 
@@ -72,6 +87,7 @@ public class TaskController extends VBox {
         }
     }
 
+
     private String completedKey() {
         return "task.completed." + taskIndex;
     }
@@ -81,8 +97,8 @@ public class TaskController extends VBox {
         hintLabel.setText("(completed)");
         flagField.setEditable(false);
 
-        taskTitle.getStyleClass().remove("task-label");        // remove normal style
-        taskTitle.getStyleClass().add("task-label-glow");      // add glowing style
+        taskTitle.getStyleClass().remove("task-label");
+        taskTitle.getStyleClass().add("task-label-glow");
     }
 
 
@@ -146,14 +162,17 @@ public class TaskController extends VBox {
         String suggestedName = null;
 
         switch (taskIndex) {
+            case 4:
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task5.png";
+                suggestedName = "task5.png";
+                break;
             case 5:
-                resourcePath = "/com/kiber/ctfprogram/taskFiles/task6.png";
-                suggestedName = "task6.png";
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task6.jpg";
+                suggestedName = "task6.jpg";
                 break;
             case 6:
                 resourcePath = "/com/kiber/ctfprogram/taskFiles/task7.txt";
                 suggestedName = "task7.txt";
-                break;
             case 8:
                 resourcePath = "/com/kiber/ctfprogram/taskFiles/task9.pcap";
                 suggestedName = "task9.pcap";
@@ -175,7 +194,7 @@ public class TaskController extends VBox {
 
             File target = chooser.showSaveDialog(this.getScene().getWindow());
             if (target == null) {
-                return; // user cancelled
+                return;
             }
 
             Files.copy(in, target.toPath(), StandardCopyOption.REPLACE_EXISTING);

@@ -2,7 +2,6 @@ package com.kiber.ctfprogram;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 public class CTFController {
 
     @FXML private TaskController task1;
@@ -19,6 +18,7 @@ public class CTFController {
     @FXML private TextArea terminal;
     @FXML private TextField terminalEntry;
     @FXML private TabPane tabPane;
+    public int task9Val = 0;
 
     private TaskController[] tasks;
 
@@ -27,12 +27,25 @@ public class CTFController {
             "Task 2: Straight from the source",
             "Task 3: Beyond /help",
             "Task 4: Back to the Beginning",
-            "Task 5",
-            "Task 6",
-            "Task 7",
+            "Task 5: Packed Keepsake(task5.png)",
+            "Task 6: Dog With Extra Baggage(task6.jpg)",
+            "Task 7: Wrong charset(task7.txt)",
             "Task 8: Retrograde Signature Archive",
-            "Task 9",
-            "Task 10"
+            "Task 9: Memory Surgery",
+            "Task 10: 63 elzzup eht fo eceip tsal ehT"
+    };
+
+    String[] contents = {
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "1012246681\n" + "101\n" + "445449751 862257758 612944151 137404964 513660317 49128542 595042419 718422220",
+            "Current value: " + task9Val,
+            ""
     };
 
     String[] hints = {
@@ -40,20 +53,20 @@ public class CTFController {
             "Look where clutter is filtered out.",
             "Read what the code says, not what the UI says.",
             "The beginning contains something you weren’t meant to see… unless you look differently.",
-            "Hint 5",
-            "Hint 6",
-            "Hint 7",
-            "This is RSA",
-            "Hint 9",
-            "Hint 10"
+            "Names lie. Headers don’t. 50 4B says more than .png.",
+            "There’s more here than RGB. Extract what the file is carrying.",
+            "If it looks like nonsense, you're probably reading it in the wrong encoding.",
+            "One large modulus, one exponent, and many blocks.",
+            "Watching the program isn’t enough. Change it.",
+            "Did you find all the fragments? Put them together how the task says"
     };
 
     String[] hashes = {
             "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c", "1a2891163e1bce944194712be2600bbe80f7b082f14e51833e6ea6d880b17a05",
             "8d2d4c3a2652c92afb982f854522a42d80d1c5d11ca4fd1f31b4bf7d4f7036c7", "352213d0d991291eed232847a798751a90036634d851b258304bade32f1f909d",
-            "FLAG5", "FLAG6",
-            "FLAG7", "FLAG8",
-            "FLAG9", "FLAG10"
+            "049b32783ea68eb88144e826a2b0b24456582e97a7fcdc4d6b9b139b533e8e58", "b448e076565f3f137d77fdfe91eb9256d9de5c7bcc85b4c6a94ee7aa71c4e835",
+            "c199e014a3e6cd43abe993c8c4464fbab639ee1c781da7e3c35ce2b86c718355", "317f315158e151efa9f64da4d907a44e899b1987b2a2b99197dd8300a9a6ee2e",
+            "FLAG9", "2218d2d36ebd4d1d36d8a92db3385b29872c6a5116407a3402ee5680fab0a5b3"
     };
 
                                                                                                                                                                                         private static final int[] PUMPKIN_ENC = {
@@ -70,7 +83,7 @@ public class CTFController {
                                                                                                                                                                                         }
 
                                                                                                                                                                                         private void handlePumpkin() {
-                                                                                                                                                                                            logMessage(getPumpkinFlag() + "\n");
+                                                                                                                                                                                            logMessage(getPumpkinFlag() + " 6e 6e \n");
                                                                                                                                                                                         }
 
 
@@ -88,7 +101,7 @@ public class CTFController {
         }
 
         for (int i = 0; i < tasks.length; ++i) {
-            tasks[i].setTask(i, titles[i], hints[i], hashes[i]);
+            tasks[i].setTask(i, titles[i],contents[i], hints[i], hashes[i]);
         }
 
         terminalEntry.setOnAction(e -> {

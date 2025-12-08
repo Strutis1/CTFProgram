@@ -12,7 +12,6 @@ target/
 *.iws
 *.iml
 *.ipr
-
 ### Eclipse ###
 # [FL4G]:1gnore_m3:)
 .apt_generated
