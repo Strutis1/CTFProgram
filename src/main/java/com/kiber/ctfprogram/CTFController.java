@@ -2,6 +2,11 @@ package com.kiber.ctfprogram;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
 public class CTFController {
 
     @FXML private TaskController task1;
@@ -18,9 +23,9 @@ public class CTFController {
     @FXML private TextArea terminal;
     @FXML private TextField terminalEntry;
     @FXML private TabPane tabPane;
-    public int task9Val = 0;
 
     private TaskController[] tasks;
+    private String task9FlagInMemory;
 
     String[] titles = {
             "Task 1: Hidden in plain sight",
@@ -32,7 +37,7 @@ public class CTFController {
             "Task 7: Wrong charset(task7.txt)",
             "Task 8: Rooted twice, a Shared exponent, and an Awaited cipher",
             "Task 9: Memory Surgery",
-            "Task 10: 63 elzzup eht fo eceip tsal ehT"
+            "Task 10: elzzup eht fo eceip tsal ehT"
     };
 
     String[] contents = {
@@ -44,7 +49,7 @@ public class CTFController {
             "",
             "",
             "-304217013558624041351027872758584082997\n\n" + "-260715660134608413191060557032778444511\n\n" +"-65537\n\n" + "-50199638024253326945249950126264517520117620969902286825861374873874353011347",
-            "Current value: " + task9Val,
+            "",
             ""
     };
 
@@ -57,7 +62,7 @@ public class CTFController {
             "There’s more here than RGB. Extract what the file is carrying.",
             "If it looks like nonsense, you're probably reading it in the wrong encoding.",
             "If you can rebuild the private key from what you’re given, the message will reveal itself.",
-            "Watching the program isn’t enough. Change it.",
+            "Access the memory. Look out for fragments",
             "Did you find all the fragments? Put them together how the task says"
     };
 
@@ -65,8 +70,8 @@ public class CTFController {
             "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c", "1a2891163e1bce944194712be2600bbe80f7b082f14e51833e6ea6d880b17a05",
             "8d2d4c3a2652c92afb982f854522a42d80d1c5d11ca4fd1f31b4bf7d4f7036c7", "352213d0d991291eed232847a798751a90036634d851b258304bade32f1f909d",
             "049b32783ea68eb88144e826a2b0b24456582e97a7fcdc4d6b9b139b533e8e58", "b448e076565f3f137d77fdfe91eb9256d9de5c7bcc85b4c6a94ee7aa71c4e835",
-            "c199e014a3e6cd43abe993c8c4464fbab639ee1c781da7e3c35ce2b86c718355", "317f315158e151efa9f64da4d907a44e899b1987b2a2b99197dd8300a9a6ee2e",
-            "FLAG9", "2218d2d36ebd4d1d36d8a92db3385b29872c6a5116407a3402ee5680fab0a5b3"
+            "fe99645a8573133fbda69f63448461ab9c7cc5a4c012807fc94fa9184bfc44ab", "317f315158e151efa9f64da4d907a44e899b1987b2a2b99197dd8300a9a6ee2e",
+            "2cf62b1f4fc5d4d5faf8cd6350ecc64fdc7a75c7a85389903c90e293b4d549e2", "2218d2d36ebd4d1d36d8a92db3385b29872c6a5116407a3402ee5680fab0a5b3"
     };
 
                                                                                                                                                                                         private static final int[] PUMPKIN_ENC = {
@@ -79,8 +84,32 @@ public class CTFController {
                                                                                                                                                                                             for (int x : PUMPKIN_ENC) {
                                                                                                                                                                                                 sb.append((char) (x ^ 42)); // reverse the XOR
                                                                                                                                                                                             }
-                                                                                                                                                                                            return sb.toString();
-                                                                                                                                                                                        }
+                                                                                                                                                                                            return sb.toString();}
+
+    private void prepareTask9Flag() {
+        if (task9FlagInMemory != null) return;
+
+        try (InputStream in = getClass().getResourceAsStream(
+                "/com/kiber/ctfprogram/taskFiles/task9.bin")) {
+
+            if (in == null) {
+                logMessage("Task 9 flag resource missing.");
+                return;
+            }
+
+            byte[] enc = in.readAllBytes();
+            byte[] dec = new byte[enc.length];
+            byte key = 0x37;
+
+            for (int i = 0; i < enc.length; i++) {
+                dec[i] = (byte) (enc[i] ^ (key ^ i));
+            }
+
+            task9FlagInMemory = new String(dec, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            logMessage("Error loading Task 9 flag: " + e.getMessage());
+        }
+    }
 
                                                                                                                                                                                         private void handlePumpkin() {
                                                                                                                                                                                             logMessage(getPumpkinFlag() + " 6e 6e \n");
@@ -103,6 +132,8 @@ public class CTFController {
         for (int i = 0; i < tasks.length; ++i) {
             tasks[i].setTask(i, titles[i],contents[i], hints[i], hashes[i]);
         }
+
+        prepareTask9Flag();
 
         terminalEntry.setOnAction(e -> {
             String cmd = terminalEntry.getText().trim();
@@ -183,5 +214,7 @@ public class CTFController {
     }
 
     private void initiateRegistration() {
+        logMessage("Initiating registration...");
+        logMessage("Not yet implemented");
     }
 }

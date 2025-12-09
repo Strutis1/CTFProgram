@@ -173,9 +173,6 @@ public class TaskController extends VBox {
             case 6:
                 resourcePath = "/com/kiber/ctfprogram/taskFiles/task7.txt";
                 suggestedName = "task7.txt";
-            case 8:
-                resourcePath = "/com/kiber/ctfprogram/taskFiles/task9.pcap";
-                suggestedName = "task9.pcap";
                 break;
             default:
                 parent.logMessage(getTitle() + " - No file to export for this task.");
