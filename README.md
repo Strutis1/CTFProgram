@@ -186,6 +186,7 @@ No specific tool is strictly required; multiple approaches may work.
 
 ---
 
+![Intro Tab](src/main/resources/com/kiber/ctfprogram/Images/intro-tab.png)
 
 ## Modifying / Extending
 
