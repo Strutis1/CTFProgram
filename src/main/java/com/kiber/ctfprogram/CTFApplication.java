@@ -5,15 +5,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class CTFApplication extends Application {
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(CTFApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(CTFApplication.class.getResource("main-view.fxml"));
+
+        Scene scene = new Scene(loader.load());
+
+        stage.setTitle("Mano CTF");
+
         stage.setScene(scene);
+
+        stage.setResizable(true);
+
+        stage.setMinWidth(900);
+        stage.setMinHeight(700);
+
         stage.show();
     }
 }
