@@ -5,6 +5,8 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
 public class CTFController {
@@ -25,7 +27,7 @@ public class CTFController {
     @FXML private TabPane tabPane;
 
     private TaskController[] tasks;
-    private String task9FlagInMemory;
+    private ByteBuffer task9FlagInMemory;
 
     String[] titles = {
             "Task 1: Hidden in plain sight",
@@ -89,6 +91,8 @@ public class CTFController {
     private void prepareTask9Flag() {
         if (task9FlagInMemory != null) return;
 
+        String anchor = "__TASK9_FLAG_MEMORY_ANCHOR__";
+
         try (InputStream in = getClass().getResourceAsStream(
                 "/com/kiber/ctfprogram/taskFiles/task9.bin")) {
 
@@ -105,13 +109,21 @@ public class CTFController {
                 dec[i] = (byte) (enc[i] ^ (key ^ i));
             }
 
-            task9FlagInMemory = new String(dec, StandardCharsets.UTF_8);
+            String flag = new String(dec, StandardCharsets.UTF_8);
+
+            String anchorPlusFlag = anchor + flag;
+
+            byte[] combinedBytes = anchorPlusFlag.getBytes(StandardCharsets.UTF_8);
+            task9FlagInMemory = ByteBuffer.wrap(combinedBytes);
+
+
         } catch (IOException e) {
             logMessage("Error loading Task 9 flag: " + e.getMessage());
         }
     }
 
-                                                                                                                                                                                        private void handlePumpkin() {
+
+    private void handlePumpkin() {
                                                                                                                                                                                             logMessage(getPumpkinFlag() + " 6e 6e \n");
                                                                                                                                                                                         }
 
