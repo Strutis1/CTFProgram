@@ -113,22 +113,21 @@ You can also run the built JAR directly.
 
 ### Linux
 
-Assuming JavaFX SDK is unpacked at `/opt/javafx-sdk-21.0.6`:
 
 ```bash
 java \
-  --module-path /opt/javafx-sdk-21.0.6/lib \
+  --module-path "Your jdk lib path" \
   --add-modules javafx.controls,javafx.fxml \
   -jar target/CTFProgram-1.0-SNAPSHOT.jar
 ```
 
 ### Windows
 
-Assuming JavaFX SDK is at `C:\javafx-sdk-21.0.6` and the jar is in the current directory:
+Assuming the jar is in the current directory:
 
 ```bat
 java ^
-  --module-path "C:\\javafx-sdk-21.0.6\\lib" ^
+  --module-path "Your jdk lib path" ^
   --add-modules javafx.controls,javafx.fxml ^
   -jar CTFProgram-1.0-SNAPSHOT.jar
 ```
