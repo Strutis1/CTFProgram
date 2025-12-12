@@ -17,8 +17,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.prefs.Preferences;
 
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
 
@@ -170,9 +168,9 @@ public class TaskController extends VBox {
                 resourcePath = "/com/kiber/ctfprogram/taskFiles/task6.jpg";
                 suggestedName = "task6.jpg";
                 break;
-            case 6:
-                resourcePath = "/com/kiber/ctfprogram/taskFiles/task7.txt";
-                suggestedName = "task7.txt";
+            case 7:
+                resourcePath = "/com/kiber/ctfprogram/taskFiles/task8.txt";
+                suggestedName = "task8.txt";
                 break;
             default:
                 parent.logMessage(getTitle() + " - No file to export for this task.");

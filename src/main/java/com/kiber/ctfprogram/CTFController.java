@@ -36,8 +36,8 @@ public class CTFController {
             "Task 4: Back to the Beginning",
             "Task 5: Packed Keepsake(task5.png)",
             "Task 6: Dog With Extra Baggage(task6.jpg)",
-            "Task 7: Wrong charset(task7.txt)",
-            "Task 8: Rooted twice, a Shared exponent, and an Awaited cipher",
+            "Task 7: Rooted twice, a Shared exponent, and an Awaited cipher",
+            "Task 8: Read between the words(task8.txt)",
             "Task 9: Memory Surgery",
             "Task 10: elzzup eht fo eceip tsal ehT"
     };
@@ -49,8 +49,8 @@ public class CTFController {
             "",
             "",
             "",
-            "",
             "-304217013558624041351027872758584082997\n\n" + "-260715660134608413191060557032778444511\n\n" +"-65537\n\n" + "-50199638024253326945249950126264517520117620969902286825861374873874353011347",
+            "",
             "",
             ""
     };
@@ -62,8 +62,8 @@ public class CTFController {
             "The beginning contains something you weren’t meant to see… unless you look differently.",
             "Names lie. Headers don’t. 50 4B says more than .png.",
             "There’s more here than RGB. Extract what the file is carrying.",
-            "If it looks like nonsense, you're probably reading it in the wrong encoding.",
             "If you can rebuild the private key from what you’re given, the message will reveal itself.",
+            "Not all characters in this file are visible.",
             "Access the memory. Look out for fragments",
             "Did you find all the fragments? Put them together how the task says"
     };
@@ -72,7 +72,7 @@ public class CTFController {
             "b9de59896c87e0d5a8ee2e299d2680d24f971ce4e195de231b002a55aa4d3c1c", "1a2891163e1bce944194712be2600bbe80f7b082f14e51833e6ea6d880b17a05",
             "8d2d4c3a2652c92afb982f854522a42d80d1c5d11ca4fd1f31b4bf7d4f7036c7", "352213d0d991291eed232847a798751a90036634d851b258304bade32f1f909d",
             "049b32783ea68eb88144e826a2b0b24456582e97a7fcdc4d6b9b139b533e8e58", "b448e076565f3f137d77fdfe91eb9256d9de5c7bcc85b4c6a94ee7aa71c4e835",
-            "fe99645a8573133fbda69f63448461ab9c7cc5a4c012807fc94fa9184bfc44ab", "317f315158e151efa9f64da4d907a44e899b1987b2a2b99197dd8300a9a6ee2e",
+            "317f315158e151efa9f64da4d907a44e899b1987b2a2b99197dd8300a9a6ee2e", "74721c3000cb6681a9cd0721475141963a5974704aad9b2540c8bd98785a8c9c",
             "2cf62b1f4fc5d4d5faf8cd6350ecc64fdc7a75c7a85389903c90e293b4d549e2", "2218d2d36ebd4d1d36d8a92db3385b29872c6a5116407a3402ee5680fab0a5b3"
     };
 
