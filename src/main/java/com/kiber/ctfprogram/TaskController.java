@@ -42,7 +42,8 @@ public class TaskController extends VBox {
     private int taskIndex = -1;
 
     private static final Preferences PREFS =
-            Preferences.userNodeForPackage(TaskController.class);
+            Preferences.userRoot().node("com/kiber/ctfprogram");
+
 
     public TaskController() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("task-view.fxml"));

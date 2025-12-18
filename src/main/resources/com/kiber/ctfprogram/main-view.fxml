@@ -70,6 +70,9 @@
                                         <Label wrapText="true"
                                                maxWidth="800"
                                                text="/finalize  - check if all tasks are done and move to registration"/>
+                                        <Label wrapText="true"
+                                               maxWidth="800"
+                                               text="/leaderboard - see the top 10 fastest users(unlocked after finalizing)"/>
 
                                         <Label alignment="TOP_CENTER"
                                                wrapText="true"

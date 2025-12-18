@@ -4,6 +4,7 @@ module com.kiber.ctfprogram {
 
     requires org.controlsfx.controls;
     requires java.prefs;
+    requires java.net.http;
 
     opens com.kiber.ctfprogram to javafx.fxml;
     exports com.kiber.ctfprogram;
